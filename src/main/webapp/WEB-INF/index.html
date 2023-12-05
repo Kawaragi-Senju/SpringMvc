@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<select th:each="band: ${bands}" name="Bands" id="Bands">
+    <option th:text="${band}" value="${band}"></option>
+</select>
 <ul><li><a href="/band/lp/album">Linkin Park</a></li></ul>
-<ul><li><a href="/band/thebeatles/album">THE BEATLES</a></li></ul>
+<ul><li><a href="/band/the_beatles/album">THE BEATLES</a></li></ul>
 <ul><li><a href="/band/acdc/album">AC DC</a></li></ul>
 </body>
 </html>

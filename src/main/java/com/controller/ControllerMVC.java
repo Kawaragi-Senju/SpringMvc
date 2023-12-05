@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.service.ServiceS;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 @Controller
 public class ControllerMVC {
@@ -12,25 +14,14 @@ public class ControllerMVC {
     ServiceS service;
 
     @GetMapping("/")
-    public String getMain(){
+    public String getMain(Model model){
+        model.addAttribute("albums", service.giveBands());
         return "index";
     }
 
-    @GetMapping("/band/lp/album")
-    public String getLpAlbums(Model model){
-        model.addAttribute("albums", service.giveAlbum("lp"));
-        return "albums";
-    }
-
-    @GetMapping("/band/thebeatles/album")
-    public String getTheBeatlesAlbums(Model model){
-        model.addAttribute("albums", service.giveAlbum("the beatles"));
-        return "albums";
-    }
-
-    @GetMapping("/band/acdc/album")
-    public String getACDCAlbums(Model model){
-        model.addAttribute("albums", service.giveAlbum("acdc"));
+    @GetMapping("/band/{band}/album")
+        public String getAlbum(Model model, @PathVariable(name="band") String band){
+        model.addAttribute("albums", service.giveAlbum(band));
         return "albums";
     }
 }
