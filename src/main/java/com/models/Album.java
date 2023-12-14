@@ -23,4 +23,14 @@ public class Album {
         return releaseDate;
     }
 
+    public String toString(){
+        StringBuffer sb = new StringBuffer();
+        sb.append(band);
+        sb.append(" ");
+        sb.append(title);
+        sb.append(" ");
+        sb.append(releaseDate);
+        return sb.toString();
+    }
+
 }

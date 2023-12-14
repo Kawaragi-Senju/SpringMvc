@@ -2,7 +2,6 @@ package com.dao;
 
 import com.models.Album;
 import org.springframework.stereotype.Repository;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -10,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Repository
 public class RepositoryS {
-    private HashMap<String, List<Album>> hashMap = new HashMap<>();
+    private final HashMap<String, List<Album>> hashMap = new HashMap<>();
 
     public RepositoryS(){
         hashMap.put("lp", List.of(new Album("Hybrid Theory", 2003, "Linkin Park"),
@@ -25,7 +24,8 @@ public class RepositoryS {
     }
 
     public List<Album> giveAlbums(String band, Integer releaseDate){
-        return hashMap.get(band).stream().filter((album) -> (album.getReleaseDate().equals(releaseDate))).collect(Collectors.toList());
+        List<Album> lA = hashMap.get(band).stream().filter((Album album) -> (album.getReleaseDate().equals(releaseDate))).collect(Collectors.toList());
+        return lA;
     }
 
     public List<Album> giveAlbum(String band){

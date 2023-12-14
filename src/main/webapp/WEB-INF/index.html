@@ -8,11 +8,11 @@
 <form method="get" action="/band/album">
 <label>Choose band</label>
 <select  name="band" id="bands">
-    <option th:each="band: ${bands}" th:text="${band}" value="${band}"></option>
+    <option th:each="band: ${bands}" th:text="${band}" th:value="${band}"></option>
 </select>
 <br/><label>Release Date</label>
-<input/>
-    <button type="submit" name="releaseDate">Click on me!</button>
+<input name="releaseDate"/>
+    <button type="submit">Click on me!</button>
 </form>
 </body>
 </html>
